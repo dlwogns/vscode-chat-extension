@@ -10,16 +10,35 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:devchat.helloWorld"
+    "onView:devchat.loginView",
+    "onCommand:devchat.promptLogin"
+  ],
+  "commands": [
+    {
+      "command": "devchat.promptLogin",
+      "title": "Prompt Login"
+    }
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "devchat.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "devchatSidebar",
+          "title": "DevChat",
+          "icon": "media/chat-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "devchatSidebar": [
+        {
+          "type": "webview",     
+          "id": "devchat.loginView",
+          "name": "Login"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

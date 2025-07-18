@@ -34,27 +34,10 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.activate = activate;
-exports.deactivate = deactivate;
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = __importStar(require("vscode"));
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+const DevChatLoginViewProvider_1 = require("./views/DevChatLoginViewProvider");
 function activate(context) {
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "devchat" is now active!');
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with registerCommand
-    // The commandId parameter must match the command field in package.json
-    const disposable = vscode.commands.registerCommand('devchat.helloWorld', () => {
-        // The code you place here will be executed every time your command is executed
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World from DevChat!');
-    });
-    context.subscriptions.push(disposable);
+    const provider = new DevChatLoginViewProvider_1.DevChatUserViewProvider(context.extensionUri);
+    context.subscriptions.push(vscode.window.registerWebviewViewProvider('devchat.loginView', provider));
 }
-// This method is called when your extension is deactivated
-function deactivate() { }
-5;
 //# sourceMappingURL=extension.js.map
