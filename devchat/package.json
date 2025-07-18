@@ -11,7 +11,7 @@
   ],
   "activationEvents": [
     "onView:devchat.loginView",
-    "onCommand:devchat.promptLogin"
+    "onView:devchat.mainView"
   ],
   "commands": [
     {
@@ -35,7 +35,14 @@
         {
           "type": "webview",     
           "id": "devchat.loginView",
-          "name": "Login"
+          "name": "Login",
+          "when": "devchat.loggedIn != true" 
+        },
+        {
+          "type": "webview",
+          "id": "devchat.mainView",
+          "name": "Main",
+          "when": "devchat.loggedIn == true"
         }
       ]
     }

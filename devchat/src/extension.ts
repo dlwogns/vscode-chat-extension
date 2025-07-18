@@ -1,9 +1,14 @@
 import * as vscode from 'vscode';
 import { DevChatUserViewProvider } from './views/DevChatUserViewProvider';
+import { DevChatMainViewProvider } from './views/DevChatMainViewProvider';
 
 export function activate(context: vscode.ExtensionContext) {
-  const provider = new DevChatUserViewProvider(context.extensionUri);
+  const userViewProvider = new DevChatUserViewProvider(context.extensionUri);
+  const mainViewProvider = new DevChatMainViewProvider(context.extensionUri);
+  
   context.subscriptions.push(
-    vscode.window.registerWebviewViewProvider('devchat.loginView', provider)
+    vscode.window.registerWebviewViewProvider('devchat.loginView', userViewProvider),
+    vscode.window.registerWebviewViewProvider('devchat.mainView', mainViewProvider)
   );
 }
+

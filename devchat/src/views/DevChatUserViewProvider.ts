@@ -8,12 +8,20 @@ export class DevChatUserViewProvider implements vscode.WebviewViewProvider {
 		context: vscode.WebviewViewResolveContext,
 		_token: vscode.CancellationToken
 	) {
+		
 		webviewView.webview.options = {
 		enableScripts: true,
 		localResourceRoots: [this.extensionUri]
 		};
 
 		webviewView.webview.html = this.getHtml(webviewView.webview);
+
+		webviewView.webview.onDidReceiveMessage((msg) => {
+			if (msg.type === 'login_success') {
+				vscode.commands.executeCommand('setContext', 'devchat.loggedIn', true);
+				vscode.commands.executeCommand('devchat.mainView.focus');
+			}
+		});
 	}
 
 	private getHtml(webview: vscode.Webview): string {
@@ -55,9 +63,13 @@ export class DevChatUserViewProvider implements vscode.WebviewViewProvider {
 
 			// 로그인 화면
 			document.getElementById("loginBtn").addEventListener("click", () => {
-			const username = document.getElementById("username").value;
-			const password = document.getElementById("password").value;
-			vscode.postMessage({ type: 'login', username, password });
+				const username = document.getElementById("username").value;
+				const password = document.getElementById("password").value;
+				if (username === 'admin' && password === '1234') {
+					vscode.postMessage({ type: 'login_success' });
+				}else {
+					vscode.postMessage({ type: 'login', username, password });
+				}
 			});
 
 			// 화면 전환: 회원가입
