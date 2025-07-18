@@ -72,3 +72,77 @@ button:hover {
   border-radius: 8px;
   margin-right: 8px;
 }
+.chat-wrapper {
+  position: relative;
+  height: 100%;
+  padding-bottom: 48px; /* 입력창 높이만큼 아래 패딩 줌 */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.chat-message {
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message.left {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.chat-message.right {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.chat-message .name {
+  font-size: 0.75em;
+  color: var(--vscode-descriptionForeground);
+  margin-bottom: 2px;
+}
+
+.chat-message .bubble {
+  padding: 8px 12px;
+  border-radius: 12px;
+  background-color: var(--vscode-editorHoverWidget-background);
+  color: var(--vscode-editor-foreground);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+ .input-area {
+  display: flex;
+  padding: 8px;
+  border-top: 1px solid var(--vscode-editorWidget-border);
+  background: var(--vscode-sideBar-background);
+}
+
+.input-area input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--vscode-editorWidget-border);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.input-area button {
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.input-area button:hover {
+  background-color: var(--vscode-button-hoverBackground);
+}

@@ -43,6 +43,12 @@
           "id": "devchat.mainView",
           "name": "Main",
           "when": "devchat.loggedIn == true"
+        },
+        { 
+          "type": "webview",
+          "id": "devchat.roomView",
+          "name": "Room", 
+          "when": "devchat.inRoom == true" 
         }
       ]
     }

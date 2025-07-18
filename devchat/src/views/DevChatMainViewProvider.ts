@@ -14,6 +14,13 @@ export class DevChatMainViewProvider implements vscode.WebviewViewProvider {
     };
 
     webviewView.webview.html = this.getHtml(webviewView.webview);
+
+    webviewView.webview.onDidReceiveMessage((msg) => {
+      if (msg.type === 'enter_room') {
+        vscode.commands.executeCommand('setContext', 'devchat.inRoom', true);
+        vscode.commands.executeCommand('devchat.roomView.focus');
+      }
+    });
   }
 
   private getHtml(webview: vscode.Webview): string {
@@ -38,16 +45,24 @@ export class DevChatMainViewProvider implements vscode.WebviewViewProvider {
           <input type="text" placeholder="채팅방 검색" readonly />
         </div>
         <div class="chat-list">
-          <div class="chat-item">
+          <div class="chat-item" data-room-id="frontend">
             <img src="..." class="chat-avatar" />
             <span class="chat-title">프론트엔드 채팅방</span>
           </div>
-          <div class="chat-item">
+          <div class="chat-item" data-room-id="backend">
             <img src="..." class="chat-avatar" />
             <span class="chat-title">백엔드 채팅방</span>
           </div>
         </div>
         <script>
+          const vscode = acquireVsCodeApi();
+
+          document.querySelectorAll('.chat-item').forEach((item) => {
+            item.addEventListener('click', () => {
+              const roomId = item.getAttribute('data-room-id');
+              vscode.postMessage({ type: 'enter_room', roomId });
+            });
+          });
         </script>
       </body>
       </html>
