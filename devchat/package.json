@@ -48,8 +48,14 @@
           "type": "webview",
           "id": "devchat.roomView",
           "name": "Room", 
-          "when": "devchat.inRoom == true" 
-        }
+          "when": "devchat.inRoom == true && devchat.currentView == 'room'" 
+        },
+        { 
+          "type": "webview",
+          "id": "devchat.searchRoomView", 
+          "name": "Search",
+          "when": "devchat.onSearch == true && devchat.currentView == 'search'"
+        } 
       ]
     }
   },

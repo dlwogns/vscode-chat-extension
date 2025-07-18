@@ -18,7 +18,12 @@ export class DevChatMainViewProvider implements vscode.WebviewViewProvider {
     webviewView.webview.onDidReceiveMessage((msg) => {
       if (msg.type === 'enter_room') {
         vscode.commands.executeCommand('setContext', 'devchat.inRoom', true);
+        vscode.commands.executeCommand('setContext', 'devchat.currentView', 'room');
         vscode.commands.executeCommand('devchat.roomView.focus');
+      }else if (msg.type === 'open_search') {
+        vscode.commands.executeCommand('setContext', 'devchat.onSearch', true);
+        vscode.commands.executeCommand('setContext', 'devchat.currentView', 'search');
+        vscode.commands.executeCommand('devchat.searchRoomView.focus');
       }
     });
   }
@@ -62,6 +67,10 @@ export class DevChatMainViewProvider implements vscode.WebviewViewProvider {
               const roomId = item.getAttribute('data-room-id');
               vscode.postMessage({ type: 'enter_room', roomId });
             });
+          });
+
+          document.getElementById("searchBar").addEventListener("click", () => {
+            vscode.postMessage({ type: 'open_search' });
           });
         </script>
       </body>
