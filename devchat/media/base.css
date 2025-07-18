@@ -31,3 +31,44 @@ button {
 button:hover {
   background-color: var(--vscode-button-hoverBackground);
 }
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.user-profile .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.username {
+  font-weight: bold;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--vscode-input-border);
+  background-color: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+}
+
+.chat-list {
+  margin-top: 10px;
+}
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 4px;
+  cursor: pointer;
+}
+.chat-item .chat-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  margin-right: 8px;
+}

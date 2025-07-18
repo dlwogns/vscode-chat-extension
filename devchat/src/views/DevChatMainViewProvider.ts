@@ -30,19 +30,24 @@ export class DevChatMainViewProvider implements vscode.WebviewViewProvider {
         <link href="${styleUri}" rel="stylesheet" />
       </head>
       <body>
-        <h3>참여 중인 채팅방</h3>
-        <ul>
-          <li>Java</li>
-          <li>TypeScript</li>
-          <li>React</li>
-        </ul>
-        <button id="logoutBtn">로그아웃</button>
-
+        <div id="userProfile" class="user-profile">
+          <img src="..." alt="프로필" class="avatar" />
+          <span class="username">admin</span>
+        </div>
+        <div id="searchBar" class="search-bar">
+          <input type="text" placeholder="채팅방 검색" readonly />
+        </div>
+        <div class="chat-list">
+          <div class="chat-item">
+            <img src="..." class="chat-avatar" />
+            <span class="chat-title">프론트엔드 채팅방</span>
+          </div>
+          <div class="chat-item">
+            <img src="..." class="chat-avatar" />
+            <span class="chat-title">백엔드 채팅방</span>
+          </div>
+        </div>
         <script>
-          const vscode = acquireVsCodeApi();
-          document.getElementById("logoutBtn").addEventListener("click", () => {
-            vscode.postMessage({ type: 'logout' });
-          });
         </script>
       </body>
       </html>
