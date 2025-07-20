@@ -55,7 +55,13 @@
           "id": "devchat.searchRoomView", 
           "name": "Search",
           "when": "devchat.onSearch == true && devchat.currentView == 'search'"
-        } 
+        },
+        {
+          "type": "webview",
+          "id": "devchat.myPageView",
+          "name": "MyPage",
+          "when": "devchat.currentView == 'mypage'"
+        }
       ]
     }
   },

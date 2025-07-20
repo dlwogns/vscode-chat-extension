@@ -24,6 +24,9 @@ export class DevChatMainViewProvider implements vscode.WebviewViewProvider {
         vscode.commands.executeCommand('setContext', 'devchat.onSearch', true);
         vscode.commands.executeCommand('setContext', 'devchat.currentView', 'search');
         vscode.commands.executeCommand('devchat.searchRoomView.focus');
+      }else if (msg.type === 'open_mypage') {
+        vscode.commands.executeCommand('setContext', 'devchat.currentView', 'mypage');
+        vscode.commands.executeCommand('devchat.myPageView.focus');
       }
     });
   }
@@ -71,6 +74,10 @@ export class DevChatMainViewProvider implements vscode.WebviewViewProvider {
 
           document.getElementById("searchBar").addEventListener("click", () => {
             vscode.postMessage({ type: 'open_search' });
+          });
+
+          document.getElementById("userProfile").addEventListener("click", () => {
+          vscode.postMessage({ type: 'open_mypage' });
           });
         </script>
       </body>
