@@ -38,24 +38,27 @@ export class DevChatUserViewProvider implements vscode.WebviewViewProvider {
 		<link href="${styleUri}" rel="stylesheet" />
 		</head>
 		<body>
+		<h2>DevChat</h2>
+		<h3>Welcome to DevChat</h3>
+		<p>DevChat is chatting platform for Developers</p>
+
 		<div id="loginView">
-			<h3>로그인</h3>
-			<input type="text" id="username" placeholder="아이디" />
-			<input type="password" id="password" placeholder="비밀번호" />
-			<button id="loginBtn">로그인</button>
-			<button id="signupBtn">회원가입</button>
+			<input type="text" id="username" placeholder="id" />
+			<input type="password" id="password" placeholder="password" />
+			<button id="loginBtn">Sign in</button>
+			<button id="signupBtn">Sign up</button>
 		</div>
 
 		<div id="signupView" style="display: none;">
-			<h3>회원가입</h3>
-			<input type="text" id="signup_id" placeholder="아이디" />
-			<input type="password" id="signup_pw" placeholder="비밀번호" />
+			<h3>Sign up</h3>
+			<input type="text" id="signup_id" placeholder="id" />
+			<input type="password" id="signup_pw" placeholder="password" />
 			<input type="text" id="signup_org" placeholder="소속 (선택)" />
 			<input type="number" id="signup_years" placeholder="경력 연차 (선택)" />
 			<input type="email" id="signup_email" placeholder="이메일 (선택)" />
 			<input type="text" id="signup_stack" placeholder="기술 스택 (예: React, Kotlin)" />
-			<button id="submitSignupBtn">가입하기</button>
-			<button id="cancelSignupBtn">취소</button>
+			<button id="submitSignupBtn">Sign up</button>
+			<button id="cancelSignupBtn">cancel</button>
 		</div>
 
 		<script>
